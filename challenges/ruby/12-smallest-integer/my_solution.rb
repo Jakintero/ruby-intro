@@ -32,11 +32,6 @@
 
 a = [1,2,3,4,5]
 def smallest_integer(a)
-  if a == ([])
-    return nil
-  else
-
-    puts a.min
-  end
-
+  return nil if a.empty?
+  a.min
 end
