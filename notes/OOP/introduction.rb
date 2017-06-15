@@ -7,6 +7,7 @@
 # class Person
 # end
 
+<<<<<<< HEAD
 # class Dog
 #   # attr_reader :name, :breed, :color, :age
 #   # attr_writer :name, :breed, :color, :age
@@ -107,3 +108,241 @@ end
 
 javier = Human.new('Javier', 30, 'Male', 'Colombian', 'Spanish')
 lorena = Human.new('Lorena', 27, 'Female', 'British', 'British')
+=======
+class Dog
+  # attr_reader :name, :breed, :color, :age
+  # attr_writer :name, :breed, :color, :age
+  attr_accessor :name, :breed, :color, :age, :alive
+
+  @@dogs = []
+
+
+  def initialize(name, breed, color, age) # Constructor
+    # Crear variables de instancia, asiganarlas a sus correspondientes valores
+    @name = name
+    @breed = breed
+    @color = color
+    @age = age
+    @alive = true
+    @nutured = false
+    @@dogs << self
+
+  end
+
+  # Metodos de instancia
+  def grow
+    @vaccines = 1
+    @age = @age + 1
+  end
+
+  def bark
+    "Woff woff my name is"
+  end
+
+  def die
+    @alive = false
+  end
+
+
+  # Metodos de clase / Getter de la variable de clase @@dogs
+  def self.all
+    @@dogs
+  end
+
+  def castrated_all
+    @@dogs.each do |dog|
+      dog.nutured = true
+    end
+  end
+
+
+  # # Getter
+  # def age
+  #   @age
+  # end
+
+  # # Setters
+  # def age=(new_age)
+  #   @age = new_age
+  # end
+
+end
+
+# Instancias
+# tulia = Dog.new('tulia', 'poddle', 'brown', 2)
+# jeska = Dog.new('jeska', 'criollo', 'brown', 2)
+# ozu = Dog.new('ozu', 'bulldog', 'brown', 2)
+# # ozu.all
+# Perro.all
+
+# p tulia.
+# # Syntactic sugar
+# p tulia.age=(7)
+# p tulia.age = 7
+# felipe = Person.new
+
+
+#
+
+# Conceptos
+# Metodos de Clase
+# Varibles de Clase
+# Scope / Cual es el valor de self
+# Mutabilidad
+# Injeccion de Dependencias
+
+#
+# map
+# map! # Metodos peligrosos
+
+# dogs = ['tulia', 'jeska', 'ozu']
+# dogs.map! do |dog|
+#   dog.capitalize
+# end
+
+
+# Patrones de Diseño
+# class Car
+#   def initialize(tires)
+#     @tires = tires
+#   end
+
+#   def hit_bump
+
+#   end
+# end
+
+# class Tire
+#   def initialize(radius)
+#     @flat = false
+#     @radius = radius
+#   end
+
+#   def explote
+#     @flat = true
+#   end
+# end
+
+
+# llanta1 = Tire.new(4)
+# llanta2 = Tire.new(4)
+# llanta3 = Tire.new(4)
+# llanta4 = Tire.new(4)
+
+
+# car = Car.new([llanta1,llanta2,llanta3,llanta4])
+
+
+class Dog
+  def initialize(name)
+    @name = name
+    @fleas = [Flea.new(10)]
+  end
+
+  def get_dirty
+    5.times do
+      @fleas << Flea.new(rand(5))
+    end
+  end
+
+  def flea_free?
+    @fleas.empty?
+  end
+
+  def get_clean
+    @fleas.pop
+  end
+end
+
+class Flea
+  def initialize(age)
+    @age = age
+  end
+end
+
+ozu = Dog.new('ozu')
+
+
+# Patrones de diseño
+# Herencia
+# Modulos (Composicion)
+  # Namespace
+  # Incluir comportamientos a una clase
+
+
+
+class Figure
+  attr_accessor :stroke, :fill
+
+  def initialize(stroke, fill)
+    @stroke = stroke
+    @fill = fill
+  end
+
+  def to_s
+    "Yo soy .."
+  end
+end
+
+class Square < Figure
+  attr_accessor :side
+
+  def initialize(stroke, fill, side)
+    super(stroke, fill)
+    @side = side
+  end
+
+  def to_s
+    super + " un Cuadrado de lado #{@side}"
+  end
+end
+
+class Circle < Figure
+  attr_accessor :radius
+
+  def to_s
+    "#{super} un circulo de radio #{@radius}"
+  end
+end
+
+
+# require_relative '../modules/flyable.rb'
+
+pajaro = Bogota::Bird.new
+module Bogota
+  class Bird
+    include Flyable
+  end
+end
+
+class Airplane
+  include Flyable # <<-- Este incluye los metodos del modulo como metodos de Instancia
+  # extend Flyable <<-- Este incluye los metodos del modulo como metodos de Clase
+
+  def able_to_fly?
+    if @speed > @drag - @weight
+      true
+    else
+      false
+    end
+  end
+end
+
+module Flyable
+  def able_to_fly?
+    if @speed > @drag - @weight
+      true
+    else
+      false
+    end
+  end
+end
+
+a = Airplane.new
+a.able_to_fly?
+
+
+
+
+
+>>>>>>> upstream/master
