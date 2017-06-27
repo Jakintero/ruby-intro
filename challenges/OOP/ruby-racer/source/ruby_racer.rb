@@ -1,4 +1,4 @@
-require_relative 'racer_utils'
+require_relative 'racer_utils.rb'
 
 class RubyRacer
   attr_reader :players, :length, :winner

@@ -1,6 +1,20 @@
 # Define a Hash
 
-# Tu solucion abajo:
+
+
+my_info = {:first_name => "Javier", :last_name => "Quintero", :hometown => "Bogota", :age => 30}
+
+# p [:first_name]
+# p [:last_name]
+# p [:hometown]
+# p [:age]
+p my_info[:first_name]
+p my_info[:last_name]
+p my_info[:hometown]
+p my_info[:age]
+
+
+
 
 
 
